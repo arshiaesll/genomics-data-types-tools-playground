@@ -11,12 +11,6 @@ conda env create -f environment.yml
 conda activate genomics-tools
 ```
 
-Or with pip:
-
-```bash
-python3 -m pip install -r requirements.txt
-```
-
 Generated artifacts now live inside each mini-project folder under its own
 `outputs/` directory.
 
