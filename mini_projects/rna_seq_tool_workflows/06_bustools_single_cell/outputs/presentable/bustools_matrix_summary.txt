@@ -1,0 +1,75 @@
+Scenario
+We use the official bundled kallisto single-cell test reads, which are
+formatted like 10x Genomics v2 data and target a compact human
+transcriptome containing HOXC-region genes plus UGT3A2.
+
+What bustools adds
+`kallisto bus` turns read pairs into BUS records that capture cell
+barcode, UMI, and transcript equivalence-class information. `bustools`
+then builds an allowlist, corrects barcode errors, sorts BUS records,
+inspects barcode-level statistics, and collapses transcript evidence into
+a cell-by-gene count matrix.
+
+Decision we want to make
+We want to see whether the dataset yields a sensible barcode-by-gene
+matrix, which genes dominate the signal, and how UMI counts are
+distributed across candidate cells.
+
+Input files
+- /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/kallisto/test/transcripts.fasta.gz
+- /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/kallisto/test/transcripts.gtf.gz
+- /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/kallisto/test/sc_reads_1.fastq.gz
+- /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/kallisto/test/sc_reads_2.fastq.gz
+
+Tools
+- kallisto bus with `-x 10xv2`
+- bustools allowlist
+- bustools correct
+- bustools sort
+- bustools inspect
+- bustools count --genecounts
+
+kallisto bus summary
+- Reads processed: 10000
+- Reads pseudoaligned: 9255
+- Pseudoalignment rate: 92.5%
+- Uniquely pseudoaligned reads: 6789
+- Transcript targets in index: 14
+
+bustools inspect summary
+- BUS records after correction/sorting: 6844
+- Reads represented in corrected sorted BUS: 8250
+- On-list barcodes in corrected BUS: 1869
+- Median reads per barcode: 3.00
+- Mean reads per barcode: 4.41
+- Median UMIs per barcode: 2.00
+- Mean UMIs per barcode: 2.12
+- Allowlist size: 1870
+
+Cell-by-gene matrix summary
+- Matrix dimensions (barcodes x genes x nonzero entries): 1869 x 10 x 1704
+- Matrix barcode file: cells_x_genes.barcodes.txt
+- Matrix gene file: cells_x_genes.genes.txt
+- Total gene-level UMIs in matrix: 2053
+- Nonzero barcodes in matrix: 1122
+- Genes represented in matrix: 10
+
+Top genes by gene-level UMI count
+- HOXC8: 1054 UMIs across 785 detected cells
+- UGT3A2: 378 UMIs across 328 detected cells
+- HOXC12: 191 UMIs across 181 detected cells
+- HOXC4: 166 UMIs across 158 detected cells
+- HOXC9: 129 UMIs across 121 detected cells
+- HOXC6: 75 UMIs across 71 detected cells
+- HOXC5: 35 UMIs across 35 detected cells
+- HOXC10: 11 UMIs across 11 detected cells
+
+Top barcodes by gene-level UMI count
+- TGCACCTTCATTATCC: 9 UMIs
+- TTTACTGCACGGTGTC: 8 UMIs
+- AGAGTGGAGCTAAACA: 7 UMIs
+- CATCGAAGTTCCCTTG: 7 UMIs
+- AATCCAGTCCACTCCA: 6 UMIs
+- ACTTTCAAGACTAGAT: 6 UMIs
+- GAATGAACATGCTAGT: 6 UMIs
+- GTCACGGAGCGATGAC: 6 UMIs

@@ -1,0 +1,73 @@
+Mini-project 3: HTSeq counting showcase
+
+Scenario
+We switch this mini-project to the official HTSeq example dataset so the
+result is a proper multi-gene count table rather than a single-feature
+demo.
+
+What the files represent
+The alignment file is a real yeast RNA-seq excerpt in SAM format, and
+the annotation is a real Saccharomyces cerevisiae GTF. HTSeq uses the
+annotation to decide which aligned reads overlap which gene exons.
+
+Decision we want to make
+We want to inspect the resulting gene count table, identify the most
+highly counted genes in the excerpt, and check HTSeq's special counters
+such as `__no_feature`.
+
+Official data sources
+SAM: https://raw.githubusercontent.com/htseq/htseq/master/example_data/yeast_RNASeq_excerpt.sam
+GTF: https://raw.githubusercontent.com/htseq/htseq/master/example_data/Saccharomyces_cerevisiae.SGD1.01.56.gtf.gz
+
+Workflow inputs
+HTSeq path: /opt/homebrew/Caskroom/miniconda/base/bin/htseq-count
+SAM input: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reads/yeast_RNASeq_excerpt.sam
+GTF input: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reference/Saccharomyces_cerevisiae.SGD1.01.56.gtf.gz
+Alignment records in SAM: 24999
+Reference sequences in SAM header: 18
+GTF feature lines: 28001
+Exon features in GTF: 7547
+Distinct genes in GTF exons: 7124
+
+Download status
+yeast_RNASeq_excerpt.sam: reused
+Saccharomyces_cerevisiae.SGD1.01.56.gtf.gz: reused
+
+Command used
+htseq-count -f sam -r pos -s no -t exon -i gene_id --additional-attr gene_name -c /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/03_htseq_counting/outputs/presentable/htseq_counts.tsv /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reads/yeast_RNASeq_excerpt.sam /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reference/Saccharomyces_cerevisiae.SGD1.01.56.gtf.gz
+
+Scenario outcome
+Return code: 0
+Counts table: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/03_htseq_counting/outputs/presentable/htseq_counts.tsv
+Top genes figure: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/03_htseq_counting/outputs/presentable/htseq_top_genes.png
+Special counter figure: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/03_htseq_counting/outputs/presentable/htseq_special_counters.png
+Genes with nonzero counts: 3804
+Total assigned counts across nonzero genes: 20988
+
+Top counted genes
+- RDN25-1 (RDN25-1): 1041
+- RPS9B (YBR189W): 227
+- RDN18-1 (RDN18-1): 201
+- RPL41B (YDL133C-A): 169
+- TDH3 (YGR192C): 169
+- RPL41A (YDL184C): 161
+- ENO2 (YHR174W): 152
+- RPS31 (YLR167W): 147
+- TEF2 (YBR118W): 143
+- FBA1 (YKL060C): 131
+- YEF3 (YLR249W): 128
+- RPS5 (YJR123W): 124
+
+HTSeq special counters
+- __no_feature: 1249
+- __ambiguous: 1426
+- __too_low_aQual: 0
+- __not_aligned: 1336
+- __alignment_not_unique: 0
+
+Interpretation
+This is the more typical HTSeq output shape: many genes with counts, plus a small set of special counters that explain where unassigned reads went.
+
+HTSeq stderr
+28001 GFF lines processed.
+24999 alignment records processed.

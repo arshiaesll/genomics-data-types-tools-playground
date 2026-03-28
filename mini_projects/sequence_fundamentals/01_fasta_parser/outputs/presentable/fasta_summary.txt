@@ -1,0 +1,67 @@
+Mini-project 1: FASTA parser and sequence statistics
+Dataset: NCBI Nucleotide accession NC_045512.2
+Organism: Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2)
+
+Record 1
+Header: NC_045512.2 Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome
+Length: 29903 bases
+GC count: 11355
+GC content: 37.97%
+Base counts: A=8954, T=9594, C=5492, G=5863, N=0
+Longest homopolymer runs: A=33, T=8, C=5, G=5, N=0
+
+High-occurring k-mers by k:
+  k=4
+    TGTT: count=330, first_position=60
+    TTTT: count=299, first_position=324
+    TTGT: count=292, first_position=51
+    TTTA: count=289, first_position=9
+  k=5
+    TTGTT: count=102, first_position=1272
+    TGTTA: count=101, first_position=514
+    AACAA: count=99, first_position=26
+    TGTTG: count=97, first_position=209
+  k=6
+    TTGTTA: count=42, first_position=1272
+    TGTTAA: count=41, first_position=1273
+    GGTGTT: count=35, first_position=767
+    TTTTAA: count=35, first_position=1789
+  k=7
+    AAAAAAA: count=27, first_position=29871
+    TTGTTAA: count=21, first_position=1272
+    TGGTGTT: count=19, first_position=766
+    AATTGTT: count=15, first_position=1768
+  k=8
+    AAAAAAAA: count=26, first_position=29871
+    ATGGTGTT: count=10, first_position=5919
+    AAATTGTT: count=8, first_position=1767
+    ACCTTTTG: count=8, first_position=1024
+  k=9
+    AAAAAAAAA: count=25, first_position=29871
+    TAAACGAAC: count=7, first_position=67
+    AATGGTGTT: count=5, first_position=7547
+    ATGGTGTTG: count=5, first_position=5919
+  k=10
+    AAAAAAAAAA: count=24, first_position=29871
+    CTAAACGAAC: count=5, first_position=66
+    TAATGGTGTT: count=5, first_position=7546
+  k=11
+    AAAAAAAAAAA: count=23, first_position=29871
+  k=12
+    AAAAAAAAAAAA: count=22, first_position=29871
+  k=13
+    AAAAAAAAAAAAA: count=21, first_position=29871
+  k=14
+    AAAAAAAAAAAAAA: count=20, first_position=29871
+  k=15
+    AAAAAAAAAAAAAAA: count=19, first_position=29871
+  k=16
+    AAAAAAAAAAAAAAAA: count=18, first_position=29871
+  k=17
+    AAAAAAAAAAAAAAAAA: count=17, first_position=29871
+  k=18
+    AAAAAAAAAAAAAAAAAA: count=16, first_position=29871
+  k=19
+    AAAAAAAAAAAAAAAAAAA: count=15, first_position=29871
+  k=20
+    AAAAAAAAAAAAAAAAAAAA: count=14, first_position=29871

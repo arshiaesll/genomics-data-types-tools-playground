@@ -1,0 +1,30 @@
+Mini-project 3: Fold change comparison
+Dataset: GEO accession GSE164073
+Comparison: Cornea_CoV2 vs Cornea_mock
+Case samples: GSM4996087, GSM4996088, GSM4996089
+Control samples: GSM4996084, GSM4996085, GSM4996086
+Pseudocount used in log2 fold change: 1.0
+
+Top upregulated genes
+SOD2 [6648]: log2FC=2.854, case_mean=29069.33, control_mean=4020.67
+IL32 [9235]: log2FC=2.719, case_mean=25.33, control_mean=3.00
+TNFSF14 [8740]: log2FC=2.536, case_mean=57.00, control_mean=9.00
+CFB [629]: log2FC=2.372, case_mean=744.67, control_mean=143.00
+FSTL5 [56884]: log2FC=2.358, case_mean=12.67, control_mean=1.67
+MYO3B [140469]: log2FC=2.248, case_mean=5.33, control_mean=0.33
+CTSS [1520]: log2FC=2.115, case_mean=16.33, control_mean=3.00
+XXYLT1-AS2 [101410543]: log2FC=2.087, case_mean=4.67, control_mean=0.33
+SLC39A8 [64116]: log2FC=2.082, case_mean=940.33, control_mean=221.33
+MIR3142HG [107075116]: log2FC=2.044, case_mean=10.00, control_mean=1.67
+
+Top downregulated genes
+MUC12 [10071]: log2FC=-2.503, case_mean=0.00, control_mean=4.67
+FRMPD3 [84443]: log2FC=-2.322, case_mean=0.00, control_mean=4.00
+LINC01587 [10141]: log2FC=-2.222, case_mean=0.00, control_mean=3.67
+ACTC1 [70]: log2FC=-2.214, case_mean=19.33, control_mean=93.33
+LINC00473 [90632]: log2FC=-2.079, case_mean=22.67, control_mean=99.00
+RANBP3-DT [100128568]: log2FC=-2.000, case_mean=0.67, control_mean=5.67
+REM1 [28954]: log2FC=-2.000, case_mean=1.00, control_mean=7.00
+TMEM179 [388021]: log2FC=-2.000, case_mean=1.00, control_mean=7.00
+MIR6728 [102465436]: log2FC=-1.967, case_mean=2.67, control_mean=13.33
+GPRC5A [9052]: log2FC=-1.965, case_mean=228.67, control_mean=895.67

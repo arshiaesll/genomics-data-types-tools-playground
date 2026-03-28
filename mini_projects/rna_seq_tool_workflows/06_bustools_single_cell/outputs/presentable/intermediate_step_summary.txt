@@ -1,0 +1,53 @@
+Intermediate step summary
+These summaries expose what changes between the raw BUS records and the
+barcode-corrected BUS records before the final gene-by-cell matrix is built.
+
+allowlist step
+Read in 7864 BUS records, wrote 1870 barcodes to on-list with threshold 2
+
+correct step
+Found 1869 barcodes in the on-list
+Processed 9255 BUS records
+In on-list = 8185
+Corrected    = 65
+Uncorrected  = 1005
+
+Raw sorted BUS overview
+- BUS records read: 7864
+- Distinct barcodes observed: 2939
+- Distinct barcode+UMI combinations: 5025
+
+Corrected sorted BUS overview
+- BUS records read: 6844
+- Distinct barcodes observed: 1869
+- Distinct barcode+UMI combinations: 3969
+
+Top raw barcodes by read count
+- CATCGAAGTTCCCTTG: 34 reads
+- CACAAACCACCAGCAC: 26 reads
+- TCACGAACAAGCGATG: 25 reads
+- AACGTTGTCAGAGACG: 22 reads
+- TACTTACTCACATAGC: 17 reads
+- TGCACCTTCATTATCC: 17 reads
+- ACCGTAATCATTCACT: 16 reads
+- AGCATACCAGTCAGAG: 16 reads
+
+Top corrected barcodes by read count
+- CATCGAAGTTCCCTTG: 35 reads
+- CACAAACCACCAGCAC: 26 reads
+- TCACGAACAAGCGATG: 26 reads
+- AACGTTGTCAGAGACG: 22 reads
+- TGCACCTTCATTATCC: 18 reads
+- TACTTACTCACATAGC: 17 reads
+- ACCGTAATCATTCACT: 16 reads
+- AGCATACCAGTCAGAG: 16 reads
+
+Top equivalence classes before and after correction
+- EC 2: raw 4146 reads, corrected 3688 reads
+- EC 10: raw 990 reads, corrected 879 reads
+- EC 3: raw 962 reads, corrected 868 reads
+- EC 8: raw 663 reads, corrected 596 reads
+- EC 1: raw 451 reads, corrected 410 reads
+- EC 6: raw 428 reads, corrected 374 reads
+- EC 12: raw 351 reads, corrected 311 reads
+- EC 7: raw 328 reads, corrected 300 reads

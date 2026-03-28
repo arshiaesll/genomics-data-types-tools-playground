@@ -1,0 +1,70 @@
+Mini-project 4: StringTie quantification showcase
+
+Scenario
+We reuse the official HTSeq yeast example alignment and annotation, but
+now we ask a different question: instead of just counting overlaps per
+gene, can we assemble transcripts and estimate expression abundance?
+
+Why StringTie is useful
+StringTie takes coordinate-sorted spliced alignments and produces an
+assembled transcript GTF plus abundance estimates such as FPKM and TPM.
+This makes it a bridge between raw alignments and transcript-level
+interpretation.
+
+Decision we want to make
+We want to see which genes have the highest StringTie abundance estimates
+in this example and what the assembled transcript set looks like.
+
+Official data sources
+SAM: https://raw.githubusercontent.com/htseq/htseq/master/example_data/yeast_RNASeq_excerpt.sam
+GTF: https://raw.githubusercontent.com/htseq/htseq/master/example_data/Saccharomyces_cerevisiae.SGD1.01.56.gtf.gz
+StringTie release: https://github.com/gpertea/stringtie/releases/download/v3.0.3/stringtie-3.0.3.OSX_x86_64.tar.gz
+
+Workflow inputs
+StringTie binary: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/stringtie_pkg/stringtie-3.0.3.OSX_x86_64/stringtie
+SAM input: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reads/yeast_RNASeq_excerpt.sam
+GTF guide (gz): /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reference/Saccharomyces_cerevisiae.SGD1.01.56.gtf.gz
+GTF guide used by StringTie: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reference/Saccharomyces_cerevisiae.SGD1.01.56.gtf
+Alignment records in SAM: 24999
+Reference sequences in SAM header: 18
+GTF feature lines: 28001
+Distinct genes in guide annotation: 7124
+Sorted SAM used for StringTie: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/04_stringtie_quantification/outputs/technical/yeast_RNASeq_excerpt.sorted.sam
+
+Download status
+yeast_RNASeq_excerpt.sam: reused
+Saccharomyces_cerevisiae.SGD1.01.56.gtf.gz: reused
+
+Command used
+arch -x86_64 /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/stringtie_pkg/stringtie-3.0.3.OSX_x86_64/stringtie -p 2 -G /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reference/Saccharomyces_cerevisiae.SGD1.01.56.gtf -A /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/04_stringtie_quantification/outputs/presentable/stringtie_gene_abundance.tsv -o /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/04_stringtie_quantification/outputs/technical/stringtie_assembled.gtf /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/04_stringtie_quantification/outputs/technical/yeast_RNASeq_excerpt.sorted.sam
+
+Scenario outcome
+Return code: 0
+Assembled GTF: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/04_stringtie_quantification/outputs/technical/stringtie_assembled.gtf
+Gene abundance table: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/04_stringtie_quantification/outputs/presentable/stringtie_gene_abundance.tsv
+Top genes TPM figure: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/04_stringtie_quantification/outputs/presentable/stringtie_top_genes_tpm.png
+Transcript length figure: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/04_stringtie_quantification/outputs/presentable/stringtie_transcript_lengths.png
+Assembled transcript records: 3824
+Genes with nonzero TPM: 3995
+
+Top StringTie genes by TPM
+- RPL41B (YDL133C-A): TPM=75465.08, FPKM=77988.49, coverage=66.44
+- RPL41A (YDL184C): TPM=40470.37, FPKM=41823.62, coverage=35.63
+- YLR154W-E (YLR154W-E): TPM=17239.08, FPKM=17815.52, coverage=15.18
+- RPS9B (YBR189W): TPM=15670.90, FPKM=16194.90, coverage=13.80
+- RPS31 (YLR167W): TPM=12524.69, FPKM=12943.49, coverage=11.03
+- RPS20 (YHL015W): TPM=11756.34, FPKM=12149.45, coverage=10.35
+- RPL40A (YIL148W): TPM=9935.53, FPKM=10267.75, coverage=8.75
+- RPL35B (YDL136W): TPM=9622.36, FPKM=9944.12, coverage=8.47
+- RPP2A (YOL039W): TPM=9274.81, FPKM=9584.95, coverage=8.17
+- CCW12 (YLR110C): TPM=9157.91, FPKM=9464.13, coverage=8.06
+- RPL37A (YLR185W): TPM=7866.27, FPKM=8129.30, coverage=6.93
+- RPL37B (YDR500C): TPM=7351.50, FPKM=7597.32, coverage=6.47
+
+Transcript assembly summary
+Minimum transcript length: 75
+Median-ish length example: 1350
+Maximum transcript length: 14733
+
+Interpretation
+StringTie complements HTSeq by estimating transcript structures and abundances, so the output now includes TPM and FPKM-style expression summaries instead of just overlap counts.

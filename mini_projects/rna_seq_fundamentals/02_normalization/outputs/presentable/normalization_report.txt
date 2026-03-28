@@ -1,0 +1,57 @@
+Mini-project 2: RNA-seq normalization
+Dataset: GEO accession GSE164073
+Selected sample: GSM4996084
+Library size: 21544009
+
+Normalization formulas
+CPM (Counts Per Million) = count / total_counts * 1,000,000
+FPKM (Fragments Per Kilobase Million) = count / (gene_length_kb * library_size_million)
+TPM (Transcripts Per Million) = RPK / sum(RPK) * 1,000,000
+
+Top genes by raw count
+FN1 [2335]: count=502911
+COX1 [4512]: count=275171
+COL1A1 [1277]: count=272538
+COL1A2 [1278]: count=241295
+ND4 [4538]: count=230580
+EEF1A1 [1915]: count=195432
+FTL [2512]: count=142020
+COX3 [4514]: count=132999
+COL6A3 [1293]: count=128639
+GAPDH [2597]: count=112577
+
+Top genes by CPM (Counts Per Million)
+FN1 [2335]: CPM=23343.43
+COX1 [4512]: CPM=12772.51
+COL1A1 [1277]: CPM=12650.29
+COL1A2 [1278]: CPM=11200.10
+ND4 [4538]: CPM=10702.74
+EEF1A1 [1915]: CPM=9071.29
+FTL [2512]: CPM=6592.09
+COX3 [4514]: CPM=6173.36
+COL6A3 [1293]: CPM=5970.99
+GAPDH [2597]: CPM=5225.44
+
+Top genes by FPKM (Fragments Per Kilobase Million)
+COX1 [4512]: FPKM=8283.08
+COX3 [4514]: FPKM=7874.19
+ND4 [4538]: FPKM=7766.87
+COX2 [4513]: FPKM=7428.76
+ATP8 [4509]: FPKM=7353.33
+ATP6 [4508]: FPKM=7154.23
+ND4L [4539]: FPKM=6179.82
+FTL [2512]: FPKM=5577.06
+CYTB [4519]: FPKM=3874.34
+GAPDH [2597]: FPKM=3018.74
+
+Top genes by TPM (Transcripts Per Million)
+COX1 [4512]: TPM=21436.90
+COX3 [4514]: TPM=20378.68
+ND4 [4538]: TPM=20100.93
+COX2 [4513]: TPM=19225.90
+ATP8 [4509]: TPM=19030.69
+ATP6 [4508]: TPM=18515.39
+ND4L [4539]: TPM=15993.59
+FTL [2512]: TPM=14433.63
+CYTB [4519]: TPM=10026.94
+GAPDH [2597]: TPM=7812.61

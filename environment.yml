@@ -1,0 +1,17 @@
+name: genomics-tools
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - matplotlib>=3.8,<4.0
+  - pysam>=0.22
+  - htseq>=2.0
+  - samtools>=1.19
+  - hisat2>=2.2
+  - star>=2.7
+  - stringtie>=2.2
+  - kallisto>=0.50
+  - bustools>=0.44

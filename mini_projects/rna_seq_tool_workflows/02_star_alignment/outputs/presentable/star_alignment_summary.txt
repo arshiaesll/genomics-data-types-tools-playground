@@ -1,0 +1,76 @@
+Mini-project 2: STAR alignment showcase
+
+Scenario
+We reuse the same official chr22 example reads from the HISAT2 mini-project
+so the aligner changes but the data do not. That makes the STAR results
+easier to compare directly with HISAT2.
+
+Why STAR is a good fit here
+STAR is a fast splice-aware RNA-seq aligner. It also reports splice
+junctions explicitly, which makes it useful for inspecting transcript-like
+alignment structure.
+
+Decision we want to make
+We want to check how well STAR maps the example reads and what kinds of
+splice junctions it reports before moving on to counting or transcript
+assembly.
+
+Official data sources
+Reference FASTA: https://raw.githubusercontent.com/DaehwanKimLab/hisat2/master/example/reference/22_20-21M.fa
+Read 1 FASTA: https://raw.githubusercontent.com/DaehwanKimLab/hisat2/master/example/reads/reads_1.fa
+Read 2 FASTA: https://raw.githubusercontent.com/DaehwanKimLab/hisat2/master/example/reads/reads_2.fa
+
+Local workflow inputs
+STAR path: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/STAR/bin/MacOSX_x86_64/STAR
+Reference FASTA: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reference/22_20-21M.fa
+Read 1 path: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reads/reads_1.fa
+Read 2 path: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reads/reads_2.fa
+STAR genomeDir: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reference/star_chr22_index
+
+Download status
+22_20-21M.fa: reused
+reads_1.fa: reused
+reads_2.fa: reused
+
+Commands used
+arch -x86_64 /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/STAR/bin/MacOSX_x86_64/STAR --runThreadN 2 --runMode genomeGenerate --genomeDir /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reference/star_chr22_index --genomeFastaFiles /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reference/22_20-21M.fa --genomeSAindexNbases 8
+arch -x86_64 /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/STAR/bin/MacOSX_x86_64/STAR --runThreadN 2 --genomeDir /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reference/star_chr22_index --readFilesIn /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reads/reads_1.fa /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reads/reads_2.fa --readFilesType Fastx --outSAMtype SAM --outSAMattributes NH HI AS nM XS --outFileNamePrefix /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/02_star_alignment/outputs/technical/star_
+
+Scenario outcome
+Return code: 0
+STAR final log: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/02_star_alignment/outputs/technical/star_Log.final.out
+STAR splice junction table: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/02_star_alignment/outputs/technical/star_SJ.out.tab
+STAR SAM output: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/02_star_alignment/outputs/technical/star_Aligned.out.sam
+Mapping figure: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/02_star_alignment/outputs/presentable/star_mapping_summary.png
+Splice junction figure: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/02_star_alignment/outputs/presentable/star_splice_junction_motifs.png
+Number of input reads: 1000
+Average input read length: 200
+Uniquely mapped reads number: 1000
+Uniquely mapped reads %: 100.00%
+Number of splices: Total: 297
+Number of splices: GT/AG: 297
+Mismatch rate per base, %: 0.59%
+% of reads mapped to multiple loci: 0.00%
+% of reads mapped to too many loci: 0.00%
+% of reads unmapped: too short: 0.00%
+% of reads unmapped: other: 0.00%
+
+SJ.out.tab summary
+Observed junction rows: 1
+Annotated junction rows: 0
+Unannotated junction rows: 1
+Unique reads supporting junctions: 297
+Multimapping reads supporting junctions: 0
+Top splice junction motifs
+- CT/AC: 1
+
+SAM-derived summary
+SAM alignment records: 2000
+Mapped alignment records: 2000
+Unmapped alignment records: 0
+Spliced alignment records (CIGAR contains N): 297
+Top reference targets in the SAM output
+- 22:20000001-21000000: 2000 records
+
+Interpretation
+STAR produced a strong unique mapping rate on this example. It reported 297 splice events in the STAR log, which is useful for transcript-aware follow-up.

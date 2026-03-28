@@ -1,0 +1,24 @@
+Mini-project 2: FASTQ parser and quality score summary
+Dataset: ENA / NCBI SRA run accession SRR20172987
+
+FASTQ file 1
+Path: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/sequence_fundamentals/data/SRR20172987_1.fastq.gz
+Read count: 123521
+Total bases: 29147221
+Average read length: 235.97
+Read length range: 35 - 251
+Average base quality: 34.76
+Average read quality range: 2.00 - 38.58
+GC content across reads: 52.11%
+Base counts: A=7634650, T=6323707, C=5805316, G=9383513, N=35
+
+FASTQ file 2
+Path: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/sequence_fundamentals/data/SRR20172987_2.fastq.gz
+Read count: 123521
+Total bases: 29117223
+Average read length: 235.73
+Read length range: 35 - 251
+Average base quality: 33.73
+Average read quality range: 2.00 - 38.50
+GC content across reads: 51.29%
+Base counts: A=5878367, T=8304426, C=8756517, G=6177878, N=35

@@ -1,0 +1,95 @@
+Mini-project 5: kallisto quantification showcase
+
+Scenario
+We use the official kallisto test dataset: a small transcriptome, a
+matching GTF, and paired-end reads bundled with the kallisto source
+distribution.
+
+Why kallisto is different
+Unlike STAR or HISAT2, kallisto does not perform full genome alignment.
+Instead, it pseudoaligns reads directly to a transcriptome index and
+estimates transcript abundance efficiently.
+
+Decision we want to make
+We want to inspect which transcripts and genes have the highest inferred
+abundance in the test sample and compare this transcript-centric output
+with the alignment-based workflows from the previous mini-projects.
+
+Workflow inputs
+kallisto binary: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/kallisto/kallisto
+Transcript FASTA: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/kallisto/test/transcripts.fasta.gz
+Transcript GTF: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/kallisto/test/transcripts.gtf.gz
+Read 1 FASTQ: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/kallisto/test/reads_1.fastq.gz
+Read 2 FASTQ: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/kallisto/test/reads_2.fastq.gz
+Index path: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/05_kallisto_quantification/outputs/technical/transcripts.idx
+
+Index build
+Return code: 0
+
+Quantification
+Return code: 0
+
+Scenario outcome
+Abundance table: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/05_kallisto_quantification/outputs/presentable/abundance.tsv
+Run info JSON: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/05_kallisto_quantification/outputs/technical/run_info.json
+Top transcript figure: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/05_kallisto_quantification/outputs/presentable/kallisto_top_transcripts_tpm.png
+Top gene figure: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/05_kallisto_quantification/outputs/presentable/kallisto_top_genes_tpm.png
+Transcript rows quantified: 14
+Gene summaries with nonzero TPM: 10
+
+Run info
+Reads processed: 10000
+Pseudoaligned reads: 9413
+Pseudoalignment rate: 94.1
+Kallisto version: 0.52.0
+
+Top transcripts by TPM
+- HOXC8-201 (ENST00000040584.5): TPM=476675.00, est_counts=4295.00
+- UGT3A2-201 (ENST00000282507.7): TPM=138884.00, est_counts=1592.02
+- HOXC9-201 (ENST00000303450.4): TPM=94221.80, est_counts=664.00
+- HOXC4-202 (ENST00000430889.2): TPM=79578.20, est_counts=623.63
+- HOXC12-201 (ENST00000243103.3): TPM=57879.30, est_counts=962.00
+- HOXC4-201 (ENST00000303406.4): TPM=42908.20, est_counts=304.19
+- HOXC6-201 (ENST00000243108.4): TPM=41944.90, est_counts=343.50
+- HOXC5-201 (ENST00000312492.2): TPM=26609.90, est_counts=228.00
+- UGT3A2-204 (ENST00000513300.5): TPM=11129.20, est_counts=102.33
+- UGT3A2-202 (ENST00000504685.5): TPM=10041.80, est_counts=68.65
+- HOXC6-202 (ENST00000394331.3): TPM=5885.85, est_counts=85.68
+- HOXC11-201 (ENST00000243082.4): TPM=5612.36, est_counts=55.00
+
+Top genes by summed transcript TPM
+- HOXC8 (ENSG00000037965): TPM=476675.00
+- UGT3A2 (ENSG00000168671): TPM=160055.00
+- HOXC4 (ENSG00000198353): TPM=122486.40
+- HOXC9 (ENSG00000180806): TPM=94221.80
+- HOXC12 (ENSG00000123407): TPM=57879.30
+- HOXC6 (ENSG00000197757): TPM=47830.75
+- HOXC5 (ENSG00000172789): TPM=26609.90
+- HOXC11 (ENSG00000123388): TPM=5612.36
+- HOXC10 (ENSG00000180818): TPM=5076.85
+- HOXC13 (ENSG00000123364): TPM=3553.05
+
+Interpretation
+kallisto gives transcript-level abundance estimates without full alignment, so the main outputs are TPM and estimated counts per transcript rather than SAM/BAM alignments.
+
+Index stderr
+[build] loading fasta file /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/kallisto/test/transcripts.fasta.gz
+[build] k-mer length: 31
+[build] building MPHF
+[build] creating equivalence classes ... 
+[build] target de Bruijn graph has k-mer length 31 and minimizer length 23
+[build] target de Bruijn graph has 21 contigs and contains 22118 k-mers
+
+Quant stderr
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 14
+[index] number of k-mers: 22,118
+[quant] running in paired-end mode
+[quant] will process pair 1: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/kallisto/test/reads_1.fastq.gz
+                             /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/tools/kallisto/test/reads_2.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 10,000 reads, 9,413 reads pseudoaligned
+[quant] estimated average fragment length: 178.02
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 52 rounds

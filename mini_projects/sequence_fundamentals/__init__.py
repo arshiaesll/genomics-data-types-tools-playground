@@ -1,0 +1,1 @@
+"""Sequence fundamentals mini-projects."""

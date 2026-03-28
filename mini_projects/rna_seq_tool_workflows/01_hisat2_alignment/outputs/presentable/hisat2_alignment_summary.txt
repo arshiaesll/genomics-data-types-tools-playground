@@ -1,0 +1,86 @@
+Mini-project 1: HISAT2 alignment showcase
+
+Scenario
+We use the official HISAT2 example files: a small chromosome 22
+reference region plus paired-end reads bundled with the HISAT2 project.
+That keeps the run lightweight while still using real public sequencing
+data and the real aligner.
+
+Why HISAT2 is a good fit here
+HISAT2 is a splice-aware aligner commonly used for RNA-seq workflows.
+We run it with `--dta` so the output is friendly for downstream
+transcript-aware tools such as StringTie.
+
+Decision we want to make
+After alignment, we want to know whether the example has a strong
+overall mapping rate and what the mapped reads look like in the SAM
+output. Those are the first checks before moving on to counting or
+assembly.
+
+Official data sources
+Reference FASTA: https://raw.githubusercontent.com/DaehwanKimLab/hisat2/master/example/reference/22_20-21M.fa
+Read 1 FASTA: https://raw.githubusercontent.com/DaehwanKimLab/hisat2/master/example/reads/reads_1.fa
+Read 2 FASTA: https://raw.githubusercontent.com/DaehwanKimLab/hisat2/master/example/reads/reads_2.fa
+
+Local workflow inputs
+HISAT2 path: /opt/homebrew/Caskroom/miniconda/base/bin/hisat2
+HISAT2-build path: /opt/homebrew/Caskroom/miniconda/base/bin/hisat2-build
+Reference FASTA: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reference/22_20-21M.fa
+Read 1 path: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reads/reads_1.fa
+Read 2 path: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reads/reads_2.fa
+Index prefix: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reference/22_20-21M
+Index files found: 8
+
+Download status
+22_20-21M.fa: reused
+reads_1.fa: reused
+reads_2.fa: reused
+
+Command used
+hisat2 -p 2 --dta -f -x /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reference/22_20-21M -1 /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reads/reads_1.fa -2 /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/data/reads/reads_2.fa -S /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/01_hisat2_alignment/outputs/technical/aligned_reads.sam
+
+Scenario outcome
+Return code: 0
+SAM output: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/01_hisat2_alignment/outputs/technical/aligned_reads.sam
+HISAT2 stderr log: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/01_hisat2_alignment/outputs/technical/hisat2_alignment.stderr.txt
+Breakdown figure: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/01_hisat2_alignment/outputs/presentable/hisat2_alignment_breakdown.png
+MAPQ figure: /Users/arshiaeslami/Desktop/PersonalProject/bioinformatics/data_types_and_tools/mini_projects/rna_seq_tool_workflows/01_hisat2_alignment/outputs/presentable/hisat2_mapq_histogram.png
+Total reads: 1000
+Paired reads: 1000
+Concordant exactly once: 971
+Concordant multiple times: 0
+Concordant zero times: 29
+Overall alignment rate: 98.55
+
+SAM-derived summary
+SAM alignment records: 2000
+Mapped alignment records: 1971
+Unmapped alignment records: 29
+Secondary alignment records: 0
+Supplementary alignment records: 0
+Spliced alignment records (CIGAR contains N): 243
+Mean MAPQ: 60.00
+Median MAPQ: 60.00
+
+Top reference targets in the SAM output
+- 22:20000001-21000000: 1971 records
+
+Interpretation
+The alignment rate is excellent for this example run. The SAM output also includes spliced alignments, which is consistent with transcript-aware mapping.
+
+Raw HISAT2 summary
+1000 reads; of these:
+  1000 (100.00%) were paired; of these:
+    29 (2.90%) aligned concordantly 0 times
+    971 (97.10%) aligned concordantly exactly 1 time
+    0 (0.00%) aligned concordantly >1 times
+    ----
+    29 pairs aligned concordantly 0 times; of these:
+      0 (0.00%) aligned discordantly 1 time
+    ----
+    29 pairs aligned 0 times concordantly or discordantly; of these:
+      58 mates make up the pairs; of these:
+        29 (50.00%) aligned 0 times
+        29 (50.00%) aligned exactly 1 time
+        0 (0.00%) aligned >1 times
+98.55% overall alignment rate
