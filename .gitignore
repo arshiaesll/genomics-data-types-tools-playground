@@ -5,36 +5,38 @@ __pycache__/
 
 .pytest_cache/
 .mypy_cache/
+.cache/
+.mplconfig/
 
 .venv/
 venv/
 
-mini_projects/**/outputs/technical/
-mini_projects/**/outputs/.cache/
-mini_projects/**/outputs/.mplconfig/
-mini_projects/**/outputs/*.png
-mini_projects/**/outputs/*.txt
-mini_projects/**/outputs/*.json
-mini_projects/**/outputs/*.tsv
-mini_projects/**/outputs/*.sam
-mini_projects/**/outputs/*.bus
-mini_projects/**/outputs/*.ec
-mini_projects/**/outputs/*.idx
-mini_projects/**/outputs/*.gtf
-mini_projects/**/outputs/*.mtx
-!mini_projects/**/outputs/presentable/
-!mini_projects/**/outputs/presentable/**
+**/outputs/technical/
+**/outputs/.cache/
+**/outputs/.mplconfig/
+**/outputs/*.png
+**/outputs/*.txt
+**/outputs/*.json
+**/outputs/*.tsv
+**/outputs/*.sam
+**/outputs/*.bus
+**/outputs/*.ec
+**/outputs/*.idx
+**/outputs/*.gtf
+**/outputs/*.mtx
+!**/outputs/presentable/
+!**/outputs/presentable/**
 
-mini_projects/sequence_fundamentals/data/*.fasta
-mini_projects/sequence_fundamentals/data/*.fastq
-mini_projects/sequence_fundamentals/data/*.fastq.gz
-mini_projects/rna_seq_fundamentals/data/*.tsv.gz
-mini_projects/rna_seq_tool_workflows/data/reads/*
-mini_projects/rna_seq_tool_workflows/data/reference/*
-!mini_projects/**/data/README.md
-!mini_projects/**/data/.gitkeep
+sequence_fundamentals/data/*.fasta
+sequence_fundamentals/data/*.fastq
+sequence_fundamentals/data/*.fastq.gz
+rna_seq_fundamentals/data/*.tsv.gz
+rna_seq_tool_workflows/data/reads/*
+rna_seq_tool_workflows/data/reference/*
+!**/data/README.md
+!**/data/.gitkeep
 
-mini_projects/rna_seq_tool_workflows/tools/*.tar.gz
-mini_projects/rna_seq_tool_workflows/tools/kallisto-0.52.0/
-mini_projects/rna_seq_tool_workflows/tools/stringtie_pkg/*.tar.gz
-mini_projects/rna_seq_tool_workflows/tools/bustools_pkg/*.tar.gz
+rna_seq_tool_workflows/tools/*.tar.gz
+rna_seq_tool_workflows/tools/kallisto-0.52.0/
+rna_seq_tool_workflows/tools/stringtie_pkg/*.tar.gz
+rna_seq_tool_workflows/tools/bustools_pkg/*.tar.gz

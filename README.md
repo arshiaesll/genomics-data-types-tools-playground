@@ -10,20 +10,29 @@ conda env create -f environment.yml
 conda activate genomics-tools
 ```
 
+Most Python-based projects run directly from that environment. A few RNA-seq
+tool workflows also rely on small bundled binaries kept under
+`rna_seq_tool_workflows/tools/`.
+
 ## How To Run
 
-Run any mini-project directly with Python:
+List available projects:
 
 ```bash
-python3 path/to/script.py
+python3 main.py --list
 ```
 
-Examples:
+Run one project:
 
 ```bash
-python3 mini_projects/sequence_fundamentals/01_fasta_parser/01_fasta_parser.py
-python3 mini_projects/rna_seq_fundamentals/02_normalization/02_normalization.py
-python3 mini_projects/rna_seq_tool_workflows/06_bustools_single_cell/06_bustools_single_cell.py
+python3 main.py fasta_parser
+python3 main.py normalization star_alignment
+```
+
+Run everything:
+
+```bash
+python3 main.py
 ```
 
 ## Project Areas
@@ -59,5 +68,5 @@ python3 mini_projects/rna_seq_tool_workflows/06_bustools_single_cell/06_bustools
 
 - Scripts download public data automatically when practical
 - Some RNA-seq tool examples include small bundled binaries or test inputs under
-  `mini_projects/rna_seq_tool_workflows/tools/`
+  `rna_seq_tool_workflows/tools/`
 - Curated plots and text summaries are committed in `outputs/presentable/`
