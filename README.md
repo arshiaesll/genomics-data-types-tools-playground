@@ -10,9 +10,9 @@ conda env create -f environment.yml
 conda activate genomics-tools
 ```
 
-Most Python-based projects run directly from that environment. A few RNA-seq
-tool workflows also rely on small bundled binaries kept under
-`rna_seq_tool_workflows/tools/`.
+The Conda environment installs the main Python and CLI dependencies used by the
+workflows. Some small bundled test inputs and fallback tool binaries also live
+under `rna_seq_tool_workflows/tools/`.
 
 ## How To Run
 

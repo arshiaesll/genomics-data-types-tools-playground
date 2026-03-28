@@ -99,6 +99,8 @@ def detect_tool(tool_name: str) -> str | None:
 
 
 def resolve_star_binary() -> Path | None:
+    if platform.system() == "Darwin" and platform.machine() == "arm64" and LOCAL_STAR_BINARY.exists():
+        return LOCAL_STAR_BINARY
     star_from_path = detect_tool("STAR")
     if star_from_path:
         return Path(star_from_path)
@@ -108,7 +110,11 @@ def resolve_star_binary() -> Path | None:
 
 
 def star_command_prefix(star_binary: Path) -> list[str]:
-    if platform.system() == "Darwin" and platform.machine() == "arm64":
+    if (
+        platform.system() == "Darwin"
+        and platform.machine() == "arm64"
+        and star_binary.resolve() == LOCAL_STAR_BINARY.resolve()
+    ):
         return ["arch", "-x86_64", str(star_binary)]
     return [str(star_binary)]
 
@@ -612,3 +618,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+    if "failed" in SUMMARY_PATH.read_text(encoding="utf-8").lower():
+        raise SystemExit(1)

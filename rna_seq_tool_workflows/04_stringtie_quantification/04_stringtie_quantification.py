@@ -119,7 +119,11 @@ def resolve_stringtie_binary() -> Path | None:
 
 
 def stringtie_command_prefix(binary: Path) -> list[str]:
-    if platform.system() == "Darwin" and platform.machine() == "arm64":
+    if (
+        platform.system() == "Darwin"
+        and platform.machine() == "arm64"
+        and binary.resolve() == STRINGTIE_BINARY.resolve()
+    ):
         return ["arch", "-x86_64", str(binary)]
     return [str(binary)]
 
@@ -514,3 +518,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+    if "failed" in SUMMARY_PATH.read_text(encoding="utf-8").lower():
+        raise SystemExit(1)
