@@ -26,6 +26,7 @@ Run one project:
 
 ```bash
 python3 main.py fasta_parser
+python3 main.py --project normalization
 python3 main.py normalization star_alignment
 ```
 

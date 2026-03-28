@@ -190,7 +190,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "projects",
         nargs="*",
-        help="Project slug(s) to run. If omitted, all projects run in order.",
+        help="Optional project slug(s) to run. If omitted, all projects run in order.",
+    )
+    parser.add_argument(
+        "-p",
+        "--project",
+        dest="project_flags",
+        action="append",
+        default=[],
+        help="Project slug to run. Repeat the flag to run more than one project.",
     )
     parser.add_argument(
         "--list",
@@ -207,7 +215,8 @@ def main() -> None:
         print_project_list()
         return
 
-    selected_projects = resolve_projects(args.projects)
+    requested_projects = list(args.projects) + list(args.project_flags)
+    selected_projects = resolve_projects(requested_projects)
     failures = [project.slug for project in selected_projects if run_project(project) != 0]
 
     if failures:
