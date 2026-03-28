@@ -71,3 +71,9 @@ python3 main.py
 - Some RNA-seq tool examples include small bundled binaries or test inputs under
   `rna_seq_tool_workflows/tools/`
 - Curated plots and text summaries are committed in `outputs/presentable/`
+
+## Note
+
+This project was created entirely by Codex and is intended for learning and
+understanding common genomics data types and tools. It is not intended to be an
+efficient or production-ready genomics workflow.
